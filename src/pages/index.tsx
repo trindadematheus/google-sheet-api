@@ -1,12 +1,35 @@
-import styled from 'styled-components'
+import styled from "styled-components";
+import matter from "gray-matter";
+import ReactMarkdown from "react-markdown";
 
-const Title = styled.h1`
-  color: #666;
-  font-size: 46px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-`
-
-export default function Home() {
-  return <Title>Google API</Title>
+export default function Home(props: any) {
+  return (
+    <Wrapper>
+      <div className="container">
+        <ReactMarkdown children={props.markdownBody} />
+      </div>
+    </Wrapper>
+  );
 }
+
+export async function getStaticProps() {
+  const content = await import(`../../README.md`);
+  const data = matter(content.default);
+
+  return {
+    props: {
+      markdownBody: data.content,
+    },
+  };
+}
+
+const Wrapper = styled.div`
+  background-color: white;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+`;

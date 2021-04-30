@@ -2,6 +2,8 @@
 
 API que cadastra quaisquer valores numa planilha Google.
 
+<br />
+
 ## Conseguindo as credenciais
 
 * Siga os passos para criar uma [Conta de Serviço Google](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account) e faça o download do JSON.
@@ -10,6 +12,8 @@ API que cadastra quaisquer valores numa planilha Google.
 
 * A API requer o ID da planilha que pode ser encontrado na URL. Ex.: ![image](https://user-images.githubusercontent.com/31348285/116716035-a786d580-a9ad-11eb-91f5-c2425ef7102e.png)
 
+
+<br />
 
 
 ## Exemplo
