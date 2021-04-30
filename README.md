@@ -35,6 +35,8 @@ const sheetId = '1xn4mnqrdRimPXdVERyx1gEDmnYY5qlkVS0O47msksbU' // ID da planilha
   })
 ```
 
+<br/>
+
 ## Referências
 
 * [Criar Conta de Serviço Google](https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication?id=service-account)
