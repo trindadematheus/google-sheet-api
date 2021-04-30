@@ -1,28 +1,30 @@
-# TypeScript & Styled Components Next.js example
+# Google SpreadSheet API
 
-This is a really simple project that show the usage of Next.js with TypeScript and Styled Components.
+API que cadastra quaisquer valores numa planilha Google.
 
-## Deploy your own
+## Conseguindo as credenciais
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+* Siga os passos para criar uma [Conta de Serviço Google](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account) e faça o download do JSON.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-styled-components&project-name=with-typescript-styled-components&repository-name=with-typescript-styled-components)
+* Em [Google Sheets](https://docs.google.com/spreadsheets/) crie uma nova planilha e compartilhe permissão de uso com o `client_email` que está no arquivo JSON.
 
-## How to use it?
+* A API requer o ID da planilha que pode ser encontrado na URL. Ex.: ![image](https://user-images.githubusercontent.com/31348285/116716035-a786d580-a9ad-11eb-91f5-c2425ef7102e.png)
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
-```bash
-npx create-next-app --example with-typescript-styled-components with-typescript-styled-components-app
-# or
-yarn create next-app --example with-typescript-styled-components with-typescript-styled-components-app
+
+## Exemplo
+
+```javascript
+const sheetId = '1xn4mnqrdRimPXdVERyx1gEDmnYY5qlkVS0O47msksbU' // ID da planilha
+
+  await axios.post('https://google-sheet-api.vercel.app/api/spreadsheet', {
+    spreadsheet_id: sheetId,
+    client_email: credentials.client_email,
+    private_key: credentials.private_key,
+    data: {
+      name: 'Matheus Trindade',
+      email: 'trindadematheus27@gmail.com',
+      github: 'https://github.com/trindadematheus'
+    }
+  })
 ```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-## Notes
-
-This is an amalgamation of the 2 existing examples:
-
-- [with-typescript](https://github.com/vercel/next.js/tree/canary/examples/with-typescript)
-- [with-styled-components](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components)
